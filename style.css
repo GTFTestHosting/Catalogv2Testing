@@ -2,12 +2,52 @@ body {
     font-family: sans-serif;
     margin: 0;
     background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.site-header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #ddd;
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.logo {
+    height: 50px;
+}
+.brand-info h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #333;
+}
+.brand-info p {
+    margin: 0;
+    color: #666;
 }
 
 .catalog-container {
     padding: 20px;
+    flex-grow: 1; /* Allows this container to grow and push the footer down */
 }
 
+/* Main Category Container - Uses Flexbox */
+.category-container {
+    display: flex;
+    gap: 20px;
+}
+/* This targets tiles *only* inside the flexbox container */
+.category-container .tile {
+    flex: 1; /* This is the key change: each tile will grow equally to fill space */
+}
+
+/* Sub-Category Container - Still uses Grid */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -22,14 +62,14 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    min-height: 200px;
+    min-height: 250px; /* Increased height for a better look */
     display: flex;
     align-items: flex-end;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .tile:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .tile h2 {
@@ -38,13 +78,34 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 5px;
+    width: 100%;
+    text-align: center;
 }
 
 .hidden {
     display: none;
 }
 
-/* Modal styles */
+/* Footer Styles */
+.site-footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+.site-footer p {
+    margin: 5px 0;
+}
+.site-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Modal styles remain the same */
 .modal {
     display: none;
     position: fixed;
@@ -86,6 +147,11 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Make main categories stack on small screens */
+    .category-container {
+        flex-direction: column;
+    }
+    
     .modal-content {
         grid-template-columns: 1fr;
     }
