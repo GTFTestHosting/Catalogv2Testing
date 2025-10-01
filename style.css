@@ -1,3 +1,8 @@
+/* Key Fix: 
+  - The body is a vertical flex container.
+  - The <main> element is now the flex item that grows.
+  - This separates the page layout from the component layout.
+*/
 body {
     font-family: sans-serif;
     margin: 0;
@@ -5,6 +10,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+main {
+    flex-grow: 1; /* This makes the main content area fill all available vertical space */
 }
 
 /* Header Styles */
@@ -34,7 +43,6 @@ body {
 
 .catalog-container {
     padding: 20px;
-    flex-grow: 1; /* Allows this container to grow and push the footer down */
 }
 
 /* Main Category Container - Uses Flexbox */
@@ -42,9 +50,9 @@ body {
     display: flex;
     gap: 20px;
 }
-/* This targets tiles *only* inside the flexbox container */
+
 .category-container .tile {
-    flex: 1; /* This is the key change: each tile will grow equally to fill space */
+    flex: 1; /* Each tile will grow equally to fill horizontal space */
 }
 
 /* Sub-Category Container - Still uses Grid */
@@ -62,7 +70,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    min-height: 250px; /* Increased height for a better look */
+    min-height: 250px;
     display: flex;
     align-items: flex-end;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -87,17 +95,16 @@ body {
 }
 
 /* Footer Styles */
-/* Footer Styles */
 .site-footer {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the content horizontally */
-    justify-content: center; /* Centers the content vertically */
+    align-items: center;
+    justify-content: center;
     background-color: #222;
     color: #ccc;
-    text-align: center; /* Fallback for text alignment */
+    text-align: center;
     padding: 20px;
-    margin-top: 40px;
+    /* Removed margin-top as flexbox now handles the spacing */
 }
 .site-footer p {
     margin: 5px 0;
@@ -110,7 +117,7 @@ body {
     text-decoration: underline;
 }
 
-/* Modal styles remain the same */
+/* Modal styles */
 .modal {
     display: none;
     position: fixed;
