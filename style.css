@@ -87,10 +87,15 @@ body {
 }
 
 /* Footer Styles */
+/* Footer Styles */
 .site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content horizontally */
+    justify-content: center; /* Centers the content vertically */
     background-color: #222;
     color: #ccc;
-    text-align: center;
+    text-align: center; /* Fallback for text alignment */
     padding: 20px;
     margin-top: 40px;
 }
